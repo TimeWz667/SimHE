@@ -1,12 +1,12 @@
-#' Determinastic Markov Chain Model
-#' create a determinastic Markov model. Basicly, the model is defined under continuous time
+#' Deterministic Markov Chain Model
+#' create a deterministic Markov model. Basicly, the model is defined under continuous time
 #' @param dm definiation of model
 #' @param pars list or vector of parameters
 #' @param default.cost default value of cost per simulation interval per person
 #' @param default.qol default value of qol per simulation interval per person, ranged [0, 1]
 #' @param default.trs default value of intensity (transition rate)
 #'
-#' @return Markov Chain Model for simulation
+#' @return Deterministic Markov Chain Model for simulation
 #' @export
 #'
 #' @examples
@@ -40,7 +40,7 @@ DetMC <- function(dm, pars, default.cost=1, default.qol=1, default.trs=1) {
   dy
 }
 
-#' @export
+
 goto.DetMC <- function(model, y, ti, dt=1) {
   pm <- Matrix::expm(model$IntensityMatrix*dt)
   y <- y %*%pm
@@ -49,7 +49,7 @@ goto.DetMC <- function(model, y, ti, dt=1) {
   states
 }
 
-#' @export
+
 observe.DetMC <- function(model, y, ti) {
   c(Time=ti, y, N=sum(y), Cost=sum(y*model$Costs), QOL=sum(y*model$QOLs))
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ddm.r
 \name{observe}
 \alias{observe}
-\title{Make observation of dynamic model}
+\title{Make observations of dynamic model}
 \usage{
 observe(model, y, ti, ...)
 }
@@ -17,7 +17,7 @@ observe(model, y, ti, ...)
 vector of obasevations
 }
 \description{
-Make observation of dynamic model
+Make observations of dynamic model
 }
 \examples{
 

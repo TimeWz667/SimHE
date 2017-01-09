@@ -1,14 +1,5 @@
 rm(list=ls())
-
-library(Matrix)
-library(data.table)
-library(deSolve)
-
-source('ddm.r')
-source('detmc.r')
-source('stomc.r')
-source('ode.r')
-source('ibm.r')
+library(SimHE)
 
 script0 <- "
 \\nodes...(this line is  comment)
@@ -20,7 +11,7 @@ C[  'description C | costC | qolC']
 \\ from_statename -> to_statename['transition function or name for this edge']
 A -> B ['TrAB']
 A -> C ['TrAC']
-B -> A ['TrBC'] 
+B -> A ['TrBC']
 
 \\ (whitespace is ignored in parsing for calculation)
 "
@@ -32,18 +23,18 @@ yini <- c(A=900, B=100, C=0)
 
 
 model <- DetMC(md, pars)
-out <- simulate(model, yini, 0, 10, 1)
+out <- simHE(model, yini, 0, 10, 1)
 
 
 model <- StoMC(md, pars)
-out <- simulate(model, yini, 0, 10, 1)
+out <- simHE(model, yini, 0, 10, 1)
 
 
 model <- ODE(md, pars)
-out <- simulate(model, yini, 0, 10, 1)
+out <- simHE(model, yini, 0, 10, 1)
 
 model <- IBM(md, pars)
-out <- simulate(model, yini, 0, 10, 1)
+out <- simHE(model, yini, 0, 10, 1)
 
 
 

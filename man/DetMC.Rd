@@ -2,8 +2,8 @@
 % Please edit documentation in R/detmc.r
 \name{DetMC}
 \alias{DetMC}
-\title{Determinastic Markov Chain Model
-create a determinastic Markov model. Basicly, the model is defined under continuous time}
+\title{Deterministic Markov Chain Model
+create a deterministic Markov model. Basicly, the model is defined under continuous time}
 \usage{
 DetMC(dm, pars, default.cost = 1, default.qol = 1, default.trs = 1)
 }
@@ -19,11 +19,11 @@ DetMC(dm, pars, default.cost = 1, default.qol = 1, default.trs = 1)
 \item{default.trs}{default value of intensity (transition rate)}
 }
 \value{
-Markov Chain Model for simulation
+Deterministic Markov Chain Model for simulation
 }
 \description{
-Determinastic Markov Chain Model
-create a determinastic Markov model. Basicly, the model is defined under continuous time
+Deterministic Markov Chain Model
+create a deterministic Markov model. Basicly, the model is defined under continuous time
 }
 \examples{
 

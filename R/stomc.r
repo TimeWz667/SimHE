@@ -40,17 +40,17 @@ StoMC <- function(m, pars, default.cost=1, default.qol=1, default.trs=1) {
   dy
 }
 
-#' @export
+
 goto.StoMC <- function(model, y, ti, dt=1) {
   pm <- Matrix::expm(model$IntensityMatrix*dt)
   sts <- names(y)
-  y <- sapply(1:length(y), function(i) stats:rmultinom(1, y[i], pm[i, ]))
+  y <- sapply(1:length(y), function(i) stats::rmultinom(1, y[i], pm[i, ]))
   y <- rowSums(y)
   names(y) <- sts
   y
 }
 
-#' @export
+
 observe.StoMC <- function(model, y, ti) {
   c(Time=ti, y, N=sum(y), Cost=sum(y*model$Costs), QOL=sum(y*model$QOLs))
 }

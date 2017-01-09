@@ -216,9 +216,10 @@ update.model <- function(model, y, ti, dt, rec='m',...) {
 #' @examples
 #'
 simHE <- function(model, yini, from, to, dt=1, rec='m', ...) {
-  UseMethod('simulate', model)
+  UseMethod('simHE', model)
 }
 
+#' @export
 simHE.default <- function(model, yini, from, to, dt=1, rec='m', ...) {
   times <- seq(from, to, by=dt)
   if (rec != 's') {
@@ -244,10 +245,9 @@ simHE.default <- function(model, yini, from, to, dt=1, rec='m', ...) {
   res
 }
 
-
 #' @export
 print.OutputDM <- function(out,...) {
-  cat('Results: ')
+  cat('Results: \n')
   print(out$Obs)
   cat('\nSimulation Time: \n')
   print(out$SimTi)

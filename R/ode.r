@@ -1,3 +1,16 @@
+#' Ordinary differential equation Model
+#' create an ODE model. Basicly, the model is defined under continuous time
+#' @param dm definiation of model
+#' @param pars list or vector of parameters
+#' @param default.cost default value of cost per simulation interval per person
+#' @param default.qol default value of qol per simulation interval per person, ranged [0, 1]
+#' @param default.trs default value of intensity (transition rate)
+#'
+#' @return ODE for simulation
+#' @export
+#'
+#' @examples
+#'
 ODE <- function(m, pars, default.cost=1, default.qol=1, default.trs=1) {
 
   if (!check.parameters(m, pars)) {
