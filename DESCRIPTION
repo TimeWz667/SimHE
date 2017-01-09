@@ -1,12 +1,18 @@
 Package: SimHE
 Type: Package
+Date: 2017/01/06
 Title: A simulation tool for health evaluation modelling
 Version: 0.1.0
 Author: Chu-Chang Ku
-Maintainer: TimeWZ <timewz667@gmail.com >
+Maintainer: TimeWZ <timewz667@gmail.com>
 Description: ## todo
 License: GPL(>=2)
 LazyData: TRUE
-Imports: DiagrammeR, deSolve, Matrix, data.table
+Imports:
+    DiagrammeR,
+    deSolve,
+    Matrix,
+    data.table
 URL: https://github.com/TimeWz667/SimHE
 BugsReport: https://github.com/TimeWz667/SimHE/issue
+RoxygenNote: 5.0.1
