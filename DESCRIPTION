@@ -5,6 +5,8 @@ Version: 0.1.0
 Author: Chu-Chang Ku
 Maintainer: TimeWZ <timewz667@gmail.com >
 Description: ## todo
-License: ## todo
+License: GPL(>=2)
 LazyData: TRUE
 Imports: DiagrammeR, deSolve, Matrix, data.table
+URL: https://github.com/TimeWz667/SimHE
+BugsReport: https://github.com/TimeWz667/SimHE/issue
