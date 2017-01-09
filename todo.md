@@ -1,7 +1,7 @@
 
 
 ## From Script to model definition
-- [x] script to model definition
+- [x] From script to model definition
 - [ ] Stat flow visualisation
 
 ## Check Parameters and suggest model type
@@ -25,5 +25,34 @@
 - [x] Individual Based Model Construction
 - [x] Individual Based Model Simulation
 
-## Output
+## Simulation 
+- [ ] Basic simulation function 
+
+## Simulation and output
 - [ ] Time Series visualisation
+- [x] Print results 
+
+## Ucertainty analysis
+- [ ] Use parameter table
+- [ ] Use simulation function
+- [ ] Visualisation
+
+## Cost Effectiveness Analysis
+- [ ] Summarise CE information
+- [ ] Compare Deterministic Models
+- [ ] Compare Stochastic Models 
+- [ ] Compare many models
+- [ ] Visualisation 
+
+## Sensitivity 
+- [ ] Single parameters
+- [ ] Multiple parameters
+- [ ] PSA
+
+## Model fitting
+- [ ] Default likehood function
+- [ ] Default density function
+- [ ] MCMC
+- [ ] ABC
+- [ ] Particle Filtering
+- [ ] Information Criteria
