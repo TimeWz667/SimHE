@@ -16,3 +16,6 @@ Imports:
 URL: https://github.com/TimeWz667/SimHE
 BugsReport: https://github.com/TimeWz667/SimHE/issue
 RoxygenNote: 5.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
