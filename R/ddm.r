@@ -106,12 +106,16 @@ ddm <- function(ss) {
   ssv <- wrap4diag(ss)                #graph code
   ssc <- paste( unlist(lapply( unlist(strsplit(trim(ssv),split='\n')), gfun)), collapse='\n')
   dm <- wrap4dynamicmodel(parseData(ss))
-  list(
+  m <- list(
     dot=ssv,
     dotc=ssc,
     model.def=dm
   )
+  class(m) <- 'DefModel'
+  m
 }
+
+
 
 
 #' Check the values of parameters
@@ -125,7 +129,7 @@ ddm <- function(ss) {
 #'
 #' @examples
 #'
-check.parameters <- function(dm, pars) {
+check.parameters <- function(dm, pars, show=F) {
   m <- dm$model.def
 
   err <- c()
@@ -138,13 +142,15 @@ check.parameters <- function(dm, pars) {
     val <- pars[[name]]
     if (is.null(val)) {
       err <- c(err, paste0('- ', name, ' uses default value'))
+    } else if (!is.double(val)) {
+      err <- c(err, paste0('- ', name, ' is not double value'))
     } else if (val < 0) {
       err <- c(err, paste0('- ', name, ' is a negative value'))
       success <- FALSE
     }
   }
 
-  for (er in err) cat(er, '\n')
+  if (show) for (er in err) cat(er, '\n')
 
   cat('The Parameters', ifelse(!success, 'are not', 'are'),'well-placed\n')
   return (success)
@@ -152,10 +158,7 @@ check.parameters <- function(dm, pars) {
 
 
 list2vect <- function(pars) {
-  nm <- names(pars)
-  pars <- as.numeric(pars)
-  names(pars) <- nm
-  return (pars)
+  unlist(pars)
 }
 
 
@@ -171,8 +174,9 @@ fill.pars.list <- function(nms, pars, default) {
 
 
 fill.pars.vector <- function(nms, pars, default=1) {
-  if (!is.numeric(pars)) {
-    pars <- list2vect(pars)
+  if (is.list(pars)) {
+    pars <- fill.pars.list(nms, pars, default)
+    return (unlist(pars[sapply(pars, is.double)]))
   }
   res <- pars[nms]
   names(res) <- nms

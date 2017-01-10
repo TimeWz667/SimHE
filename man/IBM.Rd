@@ -5,7 +5,7 @@
 \title{Individual-Based Model (microsimulation)
 create an individual based model. The state}
 \usage{
-IBM(m, pars, default.cost = 1, default.qol = 1, default.trs = 1,
+IBM(md, pars, default.cost = 1, default.qol = 1, default.trs = 1,
   ini.attr = F)
 }
 \arguments{

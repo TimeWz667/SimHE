@@ -12,12 +12,13 @@
 #'
 #' @examples
 #'
-IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=F) {
-  if (!check.parameters(m, pars)) {
+IBM <- function(md, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=F) {
+  pars <- c(pars)
+  if (!check.parameters(md, pars)) {
     stop('Parameter Checking Error')
   }
   ## check list
-  m <- m$model.def
+  m <- md$model.def
 
   n.states <- nrow(m$States)
   name.states <- rownames(m$States)
@@ -43,16 +44,15 @@ IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=
       to
     })
   names(targets) <- name.states
-  trans <- pars[unlist(lapply(targets, function(x) names(x)))]
-  trans[is.na(trans)] <- default.trs
+  trans<- fill.pars.list(unlist(lapply(targets, names)), pars, default.trs)
 
   trans <- lapply(trans, function(tr) {
     if (is.numeric(tr)) {
-      return (function(ag) rexp(1, rate=tr))
+      return (function(ag, ...) rexp(1, rate=tr))
     } else if (is.function(tr)) {
       return (tr)
     } else if (is.data.frame(tr)) {
-      return (function(ag) {
+      return (function(ag, ...) {
         atr <- tr[names(tr) != "Rate"]
         return (rexp(1, rate=tr[atr == ag[,names(atr)], "Rate"]))
       })
@@ -64,7 +64,7 @@ IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=
     if (length(ta) == 0) {
       ag$TTE <- Inf
     } else {
-      tte <- sapply(names(ta), function(f) {trans[[f]](ag)})
+      tte <- sapply(names(ta), function(f) {trans[[f]](ag, ti)})
       tr <- which.min(tte)
       ag$Next <- ta[tr]
       ag$TTE <- tte[tr] + ti

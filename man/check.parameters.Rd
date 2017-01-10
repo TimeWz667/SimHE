@@ -5,7 +5,7 @@
 \title{Check the values of parameters
 print the ill-defined parameters and parameters applied default values}
 \usage{
-check.parameters(dm, pars)
+check.parameters(dm, pars, show = F)
 }
 \arguments{
 \item{dm}{definition sheet of model}
