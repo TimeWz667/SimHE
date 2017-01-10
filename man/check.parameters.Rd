@@ -13,7 +13,7 @@ check.parameters(dm, pars)
 \item{pars}{a vector or list of the model}
 }
 \value{
-True if checking failed
+True if checking successful
 }
 \description{
 Check the values of parameters

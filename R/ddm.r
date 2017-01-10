@@ -120,7 +120,7 @@ ddm <- function(ss) {
 #' @param dm definition sheet of model
 #' @param pars a vector or list of the model
 #'
-#' @return True if checking failed
+#' @return True if checking successful
 #' @export
 #'
 #' @examples
@@ -129,25 +129,44 @@ check.parameters <- function(dm, pars) {
   m <- dm$model.def
 
   err <- c()
-  fail <- FALSE
+  success <- TRUE
+  pars <- as.list(pars)
   par.in <- c(m$States[, 'Cost'], m$States[, 'QOL'], c(m$Targets))
   par.in <- unique(par.in)
   par.in <- par.in[par.in != '']
   for (name in par.in) {
-    val <- pars[name]
-    if (is.na(val)) {
+    val <- pars[[name]]
+    if (is.null(val)) {
       err <- c(err, paste0('- ', name, ' uses default value'))
     } else if (val < 0) {
       err <- c(err, paste0('- ', name, ' is a negative value'))
-      fail <- TRUE
+      success <- FALSE
     }
   }
 
   for (er in err) cat(er, '\n')
 
-  cat('The Parameters', ifelse(fail, 'are not', 'are'),'well-placed\n')
-  return (!fail)
+  cat('The Parameters', ifelse(!success, 'are not', 'are'),'well-placed\n')
+  return (success)
 }
+
+
+list2vect <- function(pars) {
+  nm <- names(pars)
+  pars <- as.numeric(pars)
+  names(pars) <- nm
+  return (pars)
+}
+
+
+fill.pars.list <- function(md, pars, default.cost=1, default.qol=1, default.trs=1) {
+
+}
+
+fill.pars.vector <- function(md, pars, default.cost=1, default.qol=1, default.trs=1) {
+
+}
+
 
 
 #' Simulate forward one unit

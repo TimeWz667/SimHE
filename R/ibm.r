@@ -13,7 +13,7 @@
 #' @examples
 #'
 IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=F) {
-  if (is.list(pars) & !check.parameters(m, pars)) {
+  if (!check.parameters(m, pars)) {
     stop('Parameter Checking Error')
   }
   ## check list
@@ -80,7 +80,7 @@ IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=
   initialise <- function(ags, ti) {
     n <- nrow(ags)
     ags <- lapply(1:n, function(i) find.next(ags[i, ], ti))
-    return (data.frame(rbindlist(ags)))
+    return (data.frame(data.table::rbindlist(ags)))
   }
 
   costs <- pars[m$States[,'Cost']]
