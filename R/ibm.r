@@ -32,7 +32,7 @@ IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=
       ags <- lapply(1:sum(y), function(x) Agent(x, states[x], ini.attr()))
     else
       ags <- lapply(1:sum(y), function(x) Agent(x, states[x]))
-    return (data.frame(rbindlist(ags)))
+    return (data.frame(data.table::rbindlist(ags)))
   }
 
   targets <- lapply(name.states, function(x) {
@@ -83,13 +83,9 @@ IBM <- function(m, pars, default.cost=1, default.qol=1, default.trs=1, ini.attr=
     return (data.frame(data.table::rbindlist(ags)))
   }
 
-  costs <- pars[m$States[,'Cost']]
-  names(costs) <- name.states
-  costs[is.na(costs)] <- default.cost
+  costs <- fill.pars.vector(m$States[, 'Cost'], pars, default.cost)
 
-  qols <- pars[m$States[,'QOL']]
-  names(qols) <- name.states
-  qols[is.na(qols)] <- default.qol
+  qols <- fill.pars.vector(m$States[, 'QOL'], pars, default.qol)
 
   dy <- list(make.agents=make.agents,
              initialise=initialise,

@@ -159,13 +159,27 @@ list2vect <- function(pars) {
 }
 
 
-fill.pars.list <- function(md, pars, default.cost=1, default.qol=1, default.trs=1) {
-
+fill.pars.list <- function(nms, pars, default) {
+  if (!is.list(pars)) {
+    pars <- as.list(pars)
+  }
+  res <- pars[nms]
+  names(res) <- nms
+  res[sapply(res, is.null)] <- default
+  return (res)
 }
 
-fill.pars.vector <- function(md, pars, default.cost=1, default.qol=1, default.trs=1) {
 
+fill.pars.vector <- function(nms, pars, default=1) {
+  if (!is.numeric(pars)) {
+    pars <- list2vect(pars)
+  }
+  res <- pars[nms]
+  names(res) <- nms
+  res[is.na(res)] <- default
+  return (res)
 }
+
 
 
 
@@ -271,7 +285,4 @@ print.OutputDM <- function(out,...) {
   cat('\nSimulation Time: \n')
   print(out$SimTi)
 }
-
-
-
 

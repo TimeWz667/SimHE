@@ -27,13 +27,9 @@ StoMC <- function(m, pars, default.cost=1, default.qol=1, default.trs=1) {
   im[is.na(im) & m$Targets != ''] <- default.trs
   im <- im - diag(rowSums(im))
 
-  costs <- pars[m$States[,'Cost']]
-  names(costs) <- name.states
-  costs[is.na(costs)] <- default.cost
+  costs <- fill.pars.vector(m$States[, 'Cost'], pars, default.cost)
 
-  qols <- pars[m$States[,'QOL']]
-  names(qols) <- name.states
-  qols[is.na(qols)] <- default.qol
+  qols <- fill.pars.vector(m$States[, 'QOL'], pars, default.qol)
 
   dy <- list(IntensityMatrix=im, Costs=costs, QOLs=qols)
   class(dy) <- 'StoMC'
