@@ -2,12 +2,12 @@
 
 ## From Script to model definition
 - [x] From script to model definition
-- [ ] Stat flow visualisation
+- [ ] State flow visualisation
 
 ## Check Parameters and suggest model type
 - [x] Check vector of parameters
 - [ ] Check list of parameters
-- [ ] Select model type
+- [ ] Suggest model type
 
 ## Build Models
 - [x] Deterministic Maarkov Chain Model Construction
@@ -26,7 +26,7 @@
 - [x] Individual Based Model Simulation
 
 ## Simulation 
-- [ ] Basic simulation function 
+- [x] Basic simulation function 
 
 ## Simulation and output
 - [ ] Time Series visualisation
@@ -34,7 +34,7 @@
 
 ## Ucertainty analysis
 - [ ] Use parameter table
-- [ ] Use simulation function
+- [ ] Use probability function
 - [ ] Visualisation
 
 ## Cost Effectiveness Analysis
