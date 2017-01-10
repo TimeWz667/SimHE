@@ -45,5 +45,5 @@ out <- simHE(model, yini, 0, 10, 1)
 pars.sim <- list(qolA=1, qolB=0.8, colC=0.5, costA=1, costB=2, TrAB=0.02, TrBC='exp(0.2)',
      TrAC='gamma(0.1,0.1)')
 
-outs <- simHE.multi(DetMC, md, pars.sim, yini, fr=0, to=10, dt=1, 100)
+outs <- simMultiHE(DetMC, md, pars.sim, yini, fr=0, to=10, dt=1, 100)
 

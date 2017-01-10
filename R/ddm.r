@@ -150,9 +150,10 @@ check.parameters <- function(dm, pars, show=F) {
     }
   }
 
-  if (show) for (er in err) cat(er, '\n')
-
-  cat('The Parameters', ifelse(!success, 'are not', 'are'),'well-placed\n')
+  if (show) {
+    for (er in err) cat(er, '\n')
+    cat('The Parameters', ifelse(!success, 'are not', 'are'),'well-placed\n')
+  }
   return (success)
 }
 

@@ -39,7 +39,7 @@ make.parameters <- function(pars.sim, n.sim) {
 #' @examples
 #'
 #'
-simHE.multi <- function(mfunc, md, pars.tab, yini, fr, to, dt=1, n.sim=100) {
+simMultiHE <- function(mfunc, md, pars.tab, yini, fr, to, dt=1, n.sim=100) {
   if (!is.data.frame(pars.tab)) {
     pars.tab <- make.parameters(pars.sim, n.sim)
   } else {

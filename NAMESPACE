@@ -2,7 +2,6 @@
 
 S3method(print,OutputDM)
 S3method(simHE,default)
-S3method(simHE,multi)
 export(DetMC)
 export(IBM)
 export(ODE)
@@ -13,3 +12,4 @@ export(goto)
 export(make.parameters)
 export(observe)
 export(simHE)
+export(simMultiHE)
