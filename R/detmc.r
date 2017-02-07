@@ -39,7 +39,7 @@ DetMC <- function(dm, pars, default.cost=1, default.qol=1, default.trs=1) {
 
 goto.DetMC <- function(model, y, ti, dt=1) {
   pm <- Matrix::expm(model$IntensityMatrix*dt)
-  y <- y %*%pm
+  y <- y %*% pm
   states <- as.numeric(y)
   names(states) <- colnames(y)
   states
