@@ -33,14 +33,14 @@
 - [x] Print results 
 
 ## Ucertainty analysis
-- [ ] Use parameter table
-- [ ] Use probability function
+- [x] Use parameter table
+- [x] Use probability function
+- [ ] Summarisation
 - [ ] Visualisation
 
 ## Cost Effectiveness Analysis
-- [ ] Summarise CE information
-- [ ] Compare Deterministic Models
-- [ ] Compare Stochastic Models 
+- [x] Summarise CE information
+- [x] Compare Models
 - [ ] Compare many models
 - [ ] Visualisation 
 

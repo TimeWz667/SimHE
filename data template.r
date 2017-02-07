@@ -47,3 +47,23 @@ pars.sim <- list(qolA=1, qolB=0.8, colC=0.5, costA=1, costB=2, TrAB=0.02, TrBC='
 
 outs <- simMultiHE(DetMC, md, pars.sim, yini, fr=0, to=10, dt=1, 100)
 
+
+
+
+
+
+
+
+
+
+md = ddm(script0)
+yini <- c(A=900, B=100, C=0)
+
+pars.sim1 <- list(qolA=1, qolB=0.8, qolC=0.5, costA=1, costB=2, TrAB=0.02, TrBC='exp(0.2)',
+                  TrAC='gamma(0.1,0.1)')
+
+pars.sim2 <- list(qolA=1, qolB=0.8, qolC=0.5, costA=1, costB=2, TrAB=0.02, TrBC='exp(0.5)',
+                  TrAC='gamma(0.05,0.1)')
+
+
+ca <- cea(ODE, md, pars.sim2, pars.sim1, yini, 0.02, 0.02, fr=0, to=10, dt=1, 100)
